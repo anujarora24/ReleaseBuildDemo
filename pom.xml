@@ -3,4 +3,41 @@
   <groupId>com.example.maven</groupId>
   <artifactId>ReleaseBuildDemo</artifactId>
   <version>0.0.2-SNAPSHOT</version>
+  
+   <properties>
+        <jdk.version>1.7</jdk.version>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.4.2</version>
+            </plugin>
+        </plugins>
+    </build>
+    <scm>
+        <developerConnection>scm:svn:https://svn.4synergy.nl/sandbox/myapp/trunk</developerConnection>
+    </scm>
+    <distributionManagement>
+        <repository>
+            <id>ec2-arti</id>
+            <url>http://artifactory.4synergy.nl/artifactory/libs-release-local</url>
+        </repository>
+        <snapshotRepository>
+            <id>ec2-arti</id>
+            <url>http://artifactory.4synergy.nl/artifactory/libs-snapshot-local</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>
 </project>
